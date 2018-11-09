@@ -1,16 +1,12 @@
 // items- sort items
-
 var items = document.querySelectorAll('.appartments-item');
-
-// parent for sot items
-
+// parent for sort items
 var parent = document.body;
 var SortElements = new Object();
-var itemsValues = [];
 items.forEach(function(item, indx){
-
-// .appartments-item__price - selector for element where closet price
-
+  
+  // .appartments-item__price - selector for element where closet price
+  
   var itemValue = parseInt(item.querySelector('.appartments-item__price').textContent.replace('руб', '').replace(/\s+/g, ''));
   SortElements[itemValue] = {'element': item, 'index': indx} ;
 });
@@ -22,7 +18,6 @@ function compareNumeric(a, b) {
   if (a > b) return -1;
 }
 keys.sort(compareNumeric);
-console.log(keys);
 keys.map(function(key, indx){
   parent.insertAdjacentElement('beforeend', SortElements[key]['element']);
 });
